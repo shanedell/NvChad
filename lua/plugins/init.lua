@@ -97,7 +97,8 @@ local default_plugins = {
 
   -- lsp stuff
   {
-    "williamboman/mason.nvim",
+    "wlliamboman/mason.nvim",
+    'williamboman/mason-lspconfig.nvim',
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = function()
       return require "plugins.configs.mason"
