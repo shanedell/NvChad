@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = 'gatekeeper' }
+M.ui = { theme = 'nightowl' }
 M.plugins = "custom.plugins"
 
 require("custom.configs.remap")

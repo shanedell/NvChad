@@ -4,6 +4,16 @@ local default_plugins = {
 
   "nvim-lua/plenary.nvim",
 
+  "neovim/nvim-lspconfig",
+  "lspcontainers/lspcontainers.nvim",
+
+  {
+    "ray-x/go.nvim",
+    config = function()
+      require("go").setup()
+    end,
+  },
+
   {
     "NvChad/base46",
     branch = "v2.0",
