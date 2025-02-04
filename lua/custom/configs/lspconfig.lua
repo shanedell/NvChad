@@ -3,16 +3,6 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
-local servers = { "rust_analyzer" }
-
--- Simple setup of lsp servers
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -40,7 +30,9 @@ lspconfig.gopls.setup {
 }
 
 lspconfig.rust_analyzer.setup {
-  cmd = { "/Users/sdell/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- cmd = { "/Users/sdell/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rust-analyzer" },
   settings = {
     rust_analyzer = {
       import = {
@@ -61,8 +53,22 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      format = {
+        enable = true,
+      },
+    },
+  },
+}
+
 lspconfig.zls.setup {
   -- Server-specific settings. See `:help lspconfig-setup`
+  on_attach = on_attach,
+  capabilities = capabilities,
 
   -- omit the following line if `zls` is in your PATH
   cmd = { "/Users/sdell/dev/github/zls/zig-out/bin/zls" },
