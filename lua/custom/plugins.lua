@@ -10,6 +10,7 @@ local plugins = {
         "gopls",
         "rust-analyzer",
         "pyright",
+        "zls",
       },
     },
   },
