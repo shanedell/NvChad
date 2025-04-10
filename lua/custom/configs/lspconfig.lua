@@ -3,9 +3,27 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
+lspconfig.docker_compose_language_service.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {
+    "docker-compose.yml",
+    "docker-compose.yaml",
+    "compose.yml",
+    "compose.yaml",
+    "yaml.docker-compose",
+  },
+}
+
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+lspconfig.templ.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "templ" },
 }
 
 -- Customized setup of gopls lsp server
@@ -20,8 +38,8 @@ lspconfig.gopls.setup {
       completeUnimported = true,
       usePlaceholders = true,
       analyses = {
-        unusedparams = true,
         fillstruct = true,
+        unusedparams = true,
       },
       staticcheck = true,
       gofumpt = true,
@@ -72,6 +90,8 @@ lspconfig.zls.setup {
 
   -- omit the following line if `zls` is in your PATH
   cmd = { "/Users/sdell/dev/github/zls/zig-out/bin/zls" },
+
+  filetypes = { "zig" },
   -- There are two ways to set config options:
   --   - edit your `zls.json` that applies to any editor that uses ZLS
   --   - set in-editor config options with the `settings` field below.
@@ -90,4 +110,10 @@ lspconfig.zls.setup {
       -- zig_exe_path = '/Users/sdell/dev/github/zls/zls-out/bin/zls'
     },
   },
+}
+
+lspconfig.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html" },
 }

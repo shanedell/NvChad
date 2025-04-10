@@ -1,3 +1,5 @@
 return {
-    goimports = "gopls"
+  goimports = "gopls",
+  fillstruct = "gopls",
 }
+

@@ -6,15 +6,16 @@ local default_plugins = {
 
   "neovim/nvim-lspconfig",
   "lspcontainers/lspcontainers.nvim",
+  -- "jetzig-framework/zmpl.vim",
 
   {
     "ray-x/go.nvim",
-    config = function()
-      require("go").setup()
+    config = function(_, opts)
+      require("go").setup(opts)
     end,
-    -- event = {"CmdlineEnter"},
-    -- ft = {"go", 'gomod'},
-    -- build = ':lua require("go.install").update_all_sync()'
+    -- event = { "CmdlineEnter" },
+    -- ft = { "go", "gomod" },
+    -- build = ':lua require("go.install").update_all_sync()',
   },
 
   {
@@ -266,7 +267,7 @@ local default_plugins = {
 
   -- lsp stuff
   {
-    "wlliamboman/mason.nvim",
+    "williamboman/mason.nvim",
     -- "williamboman/mason-lspconfig.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
     opts = function()
