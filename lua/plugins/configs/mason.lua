@@ -1,7 +1,7 @@
 local options = {
   ensure_installed = {
     "gopls",
-    "helm-ls"
+    "helm-ls",
     "htmx-lsp",
     "java-language-server",
     "jinja-lsp",

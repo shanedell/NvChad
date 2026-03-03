@@ -4,7 +4,11 @@ local default_plugins = {
 
   "nvim-lua/plenary.nvim",
 
-  "neovim/nvim-lspconfig",
+  {
+    "neovim/nvim-lspconfig",
+    branch = "v2.5.0"
+  },
+
   "lspcontainers/lspcontainers.nvim",
   -- "jetzig-framework/zmpl.vim",
 
@@ -48,7 +52,6 @@ local default_plugins = {
     event = "User FilePost",
     config = function(_, opts)
       require("colorizer").setup(opts)
-
       -- execute colorizer as soon as possible
       vim.defer_fn(function()
         require("colorizer").attach_to_buffer(0)
@@ -84,7 +87,7 @@ local default_plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
-    tag = "v0.9.2",
+    tag = "v0.10.0",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()

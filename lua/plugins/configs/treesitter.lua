@@ -31,6 +31,12 @@ local options = {
     "php",
   },
 
+  indent = { enable = true },
+
+  sync_install = false,
+
+  auto_install = true,
+
   -- highlight = {
   --   enable = true,
   --   use_languagetree = true,
@@ -62,9 +68,6 @@ local options = {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = { "markdown" },
   },
-
-  indent = { enable = true },
-  sync_install = false,
 }
 
 return options
